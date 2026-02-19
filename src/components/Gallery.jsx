@@ -26,28 +26,21 @@ const collections = [
 ];
 
 // Placeholder for images until we have a real manifest/CMS
+import { nocturn_joggas, conduct_ldn } from '../data/photos';
+
+// Placeholder for images until we have a real manifest/CMS
 const getImages = (collectionId, subCollectionId) => {
   const basePath = `${import.meta.env.BASE_URL}images`;
 
   if (collectionId === 'NocturnLDN' && subCollectionId === 'Joggas') {
-    return [
-      { src: `${basePath}/NocturnLDN/Joggas/_DSC0155.JPG`, alt: 'Joggas 1' },
-    ];
+    return nocturn_joggas.map(name => ({
+      src: `${basePath}/NocturnLDN/Joggas/${name}`,
+      alt: name
+    }));
   }
 
   if (collectionId === 'ConductLDN') {
-    const filenames = [
-      '_DSC0067.JPG', '_DSC0068.JPG', '_DSC0071.JPG', '_DSC0080.JPG', '_DSC0090.JPG',
-      '_DSC0091.JPG', '_DSC0093.JPG', '_DSC0103.JPG', '_DSC0106.JPG', '_DSC0123.JPG',
-      '_DSC0138.JPG', '_DSC0148.JPG', '_DSC0153.JPG', '_DSC0155.JPG', '_DSC0156.JPG',
-      '_DSC0158.JPG', '_DSC0161.JPG', '_DSC0168.JPG', '_DSC0169.JPG', '_DSC0183.JPG',
-      '_DSC0194.JPG', '_DSC0256.JPG', '_DSC0295.JPG', '_DSC0296.JPG', '_DSC0301.JPG',
-      '_DSC0332.JPG', '_DSC0352.JPG', '_DSC0372.JPG', '_DSC0420.JPG', '_DSC0461.JPG',
-      '_DSC0466.JPG', '_DSC0481.JPG', '_DSC0837.JPG', '_DSC0840.JPG', '_DSC0844.JPG',
-      '_DSC0864.JPG', '_DSC0867.JPG', '_DSC0882.JPG', '_DSC0883.JPG', '_DSC0898.JPG',
-      '_DSC0962.JPG', '_DSC0965.JPG', '_DSC0971.JPG', '_DSC0991.JPG', '_DSC0996.JPG'
-    ];
-    return filenames.map(name => ({
+    return conduct_ldn.map(name => ({
       src: `${basePath}/ConductLDN/${name}`,
       alt: name
     }));
