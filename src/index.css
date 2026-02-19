@@ -20,7 +20,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background: #1a1a1a;
-  overflow: hidden; /* Prevent scrollbars during animations if possible */
+  overflow: hidden;
+  /* Prevent scrollbars during animations if possible */
 }
 
 #root {
@@ -74,4 +75,27 @@ body {
   color: #646cff;
   border-color: #646cff;
   background-color: rgba(100, 108, 255, 0.1);
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 2 / 3;
+  /* Portrait aspect ratio */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
