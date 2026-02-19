@@ -148,7 +148,7 @@ const GalleryWrapper = () => {
     <div style={{ padding: '2rem', textAlign: 'center', color: 'white' }}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route index element={<CollectionList />} />
+          <Route index element={<ImageGrid collectionId="ConductLDN" />} />
           <Route path=":collectionId" element={<CollectionRouteWrapper />} />
           <Route path=":collectionId/:subCollectionId" element={<SubCollectionRouteWrapper />} />
         </Routes>
