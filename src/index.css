@@ -15,13 +15,12 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /* display: flex; */
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
   background: #1a1a1a;
-  overflow: hidden;
-  /* Prevent scrollbars during animations if possible */
+  overflow-y: auto;
 }
 
 #root {
@@ -98,4 +97,46 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Collection Lists */
+.collection-list ul,
+.sub-collection-list ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.collection-link {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.collection-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #646cff;
+  transform: translateY(-2px);
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #fff;
 }
