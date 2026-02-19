@@ -103,6 +103,25 @@ const SubCollectionList = ({ collectionId }) => {
 
 const ImageGrid = ({ collectionId, subCollectionId }) => {
   const images = getImages(collectionId, subCollectionId);
+  const scrollRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onWheel = (e) => {
+      if (e.deltaY === 0) return;
+      // Scroll functionality: vertical scroll translates to horizontal
+      e.preventDefault();
+      el.scrollTo({
+        left: el.scrollLeft + e.deltaY,
+        behavior: 'auto' // smooth behavior can feel laggy with wheel
+      });
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, []);
 
   // Function to assign a predictable stagger class based on index
   const getStaggerClass = (index) => {
@@ -114,6 +133,7 @@ const ImageGrid = ({ collectionId, subCollectionId }) => {
 
   return (
     <motion.div
+      ref={scrollRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

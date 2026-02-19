@@ -129,7 +129,7 @@ body {
   object-fit: contain;
 }
 
-/* Vertical Staggering classes */
+/* Vertical Staggering classes - Default (Desktop) */
 .stagger-top {
   align-self: flex-start;
   margin-top: 6rem;
@@ -169,4 +169,44 @@ body {
 .collection-nav a.active {
   color: #000;
   font-weight: 600;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+    flex-direction: row;
+    /* Keep row */
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    display: none;
+    /* Hide main nav on mobile for now, or implement burger menu. 
+                    For this iteration, let's keep it simple or maybe just show 'Works' */
+  }
+
+  .gallery-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 100vh;
+    /* Ensure full viewport height */
+  }
+
+  .gallery-item {
+    height: 50vh;
+    /* Smaller height on mobile */
+    margin-right: 1rem;
+    /* Smaller gap */
+  }
+
+  /* Reduce staggering effect on mobile to prevent overflow/cut-off */
+  .stagger-top {
+    margin-top: 4rem;
+  }
+
+  .stagger-bottom {
+    margin-bottom: 4rem;
+    /* Lift it up a bit */
+  }
 }
