@@ -1,0 +1,6 @@
+/* Removing default Vite styles to let index.css take over */
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
