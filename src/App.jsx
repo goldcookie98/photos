@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import Header from './components/Header';
 import Menu from './components/Menu';
 import Gallery from './components/Gallery';
 import About from './components/About';
@@ -13,8 +14,7 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Menu />} />
-        <Route path="/gallery/*" element={<Gallery />} />
+        <Route path="/" element={<Gallery />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
@@ -25,6 +25,7 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <Router basename={import.meta.env.BASE_URL}>
+      <Header />
       <AnimatedRoutes />
     </Router>
   );

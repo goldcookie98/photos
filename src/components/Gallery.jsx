@@ -54,13 +54,13 @@ const CollectionList = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="collection-list"
+    style={{ paddingTop: '100px', textAlign: 'center' }}
   >
-    <h2>Collections</h2>
-    <ul>
+    <h2>Select a Collection</h2>
+    <ul className="nav-links" style={{ justifyContent: 'center', marginTop: '2rem' }}>
       {collections.map((col) => (
         <li key={col.id}>
-          <Link to={`/gallery/${col.id}`} className="collection-link">
+          <Link to={`/gallery/${col.id}`} style={{ textDecoration: 'none', color: '#000', fontSize: '1.5rem', fontWeight: 'bold' }}>
             {col.title}
           </Link>
         </li>
@@ -84,19 +84,19 @@ const SubCollectionList = ({ collectionId }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="sub-collection-list"
+      style={{ paddingTop: '100px', textAlign: 'center' }}
     >
       <h2>{collection.title}</h2>
-      <ul>
+      <ul className="nav-links" style={{ justifyContent: 'center', marginTop: '2rem' }}>
         {collection.subCollections.map((sub) => (
           <li key={sub.id}>
-            <Link to={`/gallery/${collectionId}/${sub.id}`} className="collection-link">
+            <Link to={`/gallery/${collectionId}/${sub.id}`} style={{ textDecoration: 'none', color: '#000', fontSize: '1.2rem' }}>
               {sub.title}
             </Link>
           </li>
         ))}
       </ul>
-      <Link to="/gallery" className="back-link">← Back to Collections</Link>
+      <Link to="/gallery" style={{ display: 'block', marginTop: '2rem', color: '#666', textDecoration: 'none' }}>← Back to Collections</Link>
     </motion.div>
   );
 };
@@ -104,33 +104,39 @@ const SubCollectionList = ({ collectionId }) => {
 const ImageGrid = ({ collectionId, subCollectionId }) => {
   const images = getImages(collectionId, subCollectionId);
 
+  // Function to assign a predictable stagger class based on index
+  const getStaggerClass = (index) => {
+    const mod = index % 3;
+    if (mod === 0) return 'stagger-center';
+    if (mod === 1) return 'stagger-top';
+    return 'stagger-bottom';
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      className="gallery-container"
     >
-      <h2>{subCollectionId ? subCollectionId : collectionId}</h2>
-
       {images.length === 0 ? (
-        <p>No images found in this collection yet.</p>
+        <div style={{ padding: '2rem' }}>
+          <p>No images found in this collection yet.</p>
+        </div>
       ) : (
-        <div className="gallery-grid">
+        <>
           {images.map((img, index) => (
             <motion.div
               key={index}
-              className="gallery-item"
-              whileHover={{ scale: 1.05 }}
+              className={`gallery-item ${getStaggerClass(index)}`}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <img src={img.src} alt={img.alt} loading="lazy" />
             </motion.div>
           ))}
-        </div>
+        </>
       )}
-      <Link to={subCollectionId ? `/gallery/${collectionId}` : "/gallery"} className="back-link">
-        ← Back
-      </Link>
     </motion.div>
   );
 };
