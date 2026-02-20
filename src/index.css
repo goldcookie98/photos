@@ -99,7 +99,7 @@ body {
   padding-left: 2rem;
   /* Initial padding */
   padding-right: 2rem;
-  scroll-behavior: smooth;
+
   /* Hide scrollbar for cleaner look */
   -ms-overflow-style: none;
   /* IE and Edge */

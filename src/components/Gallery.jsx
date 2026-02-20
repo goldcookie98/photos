@@ -110,18 +110,23 @@ const ImageGrid = ({ collectionId, subCollectionId }) => {
     if (!el) return;
 
     const onWheel = (e) => {
+      // Only hijack vertical scroll
       if (e.deltaY === 0) return;
-      // Scroll functionality: vertical scroll translates to horizontal
+
       e.preventDefault();
-      el.scrollTo({
-        left: el.scrollLeft + e.deltaY,
-        behavior: 'auto' // smooth behavior can feel laggy with wheel
-      });
+
+      // Direct mapping - no physics loop, no state, no smooth behavior conflict.
+      // Just raw scroll.
+      // 1.5 multiplier to make it slightly faster than 1:1 but still controllable
+      el.scrollLeft += e.deltaY * 1.5;
     };
 
     el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, []);
+
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+    };
+  }, [images]);
 
   // Function to assign a predictable stagger class based on index
   const getStaggerClass = (index) => {
