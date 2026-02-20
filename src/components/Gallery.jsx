@@ -155,7 +155,7 @@ const ImageGrid = ({ collectionId, subCollectionId }) => {
               key={index}
               className={`gallery-item ${getStaggerClass(index)}`}
               whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
             >
               <img src={img.src} alt={img.alt} loading="lazy" />
             </motion.div>
