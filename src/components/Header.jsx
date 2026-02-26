@@ -11,17 +11,17 @@ const Header = () => {
             <nav>
                 <ul className="nav-links">
                     <li>
-                        <NavLink to="/gallery/NocturnLDN" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                             NocturnLDN
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <NavLink to="/ConductLDN" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                             ConductLDN
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/gallery/VantaLDN" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <NavLink to="/VantaLDN" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                             VantaLDN
                         </NavLink>
                     </li>

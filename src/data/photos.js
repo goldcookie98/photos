@@ -5,6 +5,12 @@ export const nocturn_joggas = [
     "_DSC0155.JPG",
 ];
 
+export const raw_denim_tartan_jeans = [
+    "_DSC0363.jpg",
+    "_DSC0466 (2).jpg",
+    "_DSC0501 (1).jpg",
+];
+
 export const conduct_ldn = [
     "_DSC0156.JPG",
     "_DSC0067.JPG",

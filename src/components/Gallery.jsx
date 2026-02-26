@@ -26,7 +26,7 @@ const collections = [
 ];
 
 // Placeholder for images until we have a real manifest/CMS
-import { nocturn_joggas, conduct_ldn } from '../data/photos';
+import { nocturn_joggas, conduct_ldn, raw_denim_tartan_jeans } from '../data/photos';
 
 // Placeholder for images until we have a real manifest/CMS
 const getImages = (collectionId, subCollectionId) => {
@@ -35,6 +35,13 @@ const getImages = (collectionId, subCollectionId) => {
   if (collectionId === 'NocturnLDN' && subCollectionId === 'Joggas') {
     return nocturn_joggas.map(name => ({
       src: `${basePath}/NocturnLDN/Joggas/${name}`,
+      alt: name
+    }));
+  }
+
+  if (collectionId === 'NocturnLDN' && subCollectionId === 'RawDenimTartanJeans') {
+    return raw_denim_tartan_jeans.map(name => ({
+      src: `${basePath}/NocturnLDN/RawDenimTartanJeans/${name}`,
       alt: name
     }));
   }
@@ -60,7 +67,7 @@ const CollectionList = () => (
     <ul className="nav-links" style={{ justifyContent: 'center', marginTop: '2rem' }}>
       {collections.map((col) => (
         <li key={col.id}>
-          <Link to={`/gallery/${col.id}`} style={{ textDecoration: 'none', color: '#000', fontSize: '1.5rem', fontWeight: 'bold' }}>
+          <Link to={`/${col.id}`} style={{ textDecoration: 'none', color: '#000', fontSize: '1.5rem', fontWeight: 'bold' }}>
             {col.title}
           </Link>
         </li>
@@ -90,13 +97,13 @@ const SubCollectionList = ({ collectionId }) => {
       <ul className="nav-links" style={{ justifyContent: 'center', marginTop: '2rem' }}>
         {collection.subCollections.map((sub) => (
           <li key={sub.id}>
-            <Link to={`/gallery/${collectionId}/${sub.id}`} style={{ textDecoration: 'none', color: '#000', fontSize: '1.2rem' }}>
+            <Link to={`/${collectionId}/${sub.id}`} style={{ textDecoration: 'none', color: '#000', fontSize: '1.2rem' }}>
               {sub.title}
             </Link>
           </li>
         ))}
       </ul>
-      <Link to="/gallery" style={{ display: 'block', marginTop: '2rem', color: '#666', textDecoration: 'none' }}>← Back to Collections</Link>
+      <Link to="/" style={{ display: 'block', marginTop: '2rem', color: '#666', textDecoration: 'none' }}>← Back to Collections</Link>
     </motion.div>
   );
 };
@@ -173,7 +180,7 @@ const GalleryWrapper = () => {
     <div style={{ padding: '2rem', textAlign: 'center', color: 'white' }}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route index element={<ImageGrid collectionId="ConductLDN" />} />
+          <Route index element={<SubCollectionList collectionId="NocturnLDN" />} />
           <Route path=":collectionId" element={<CollectionRouteWrapper />} />
           <Route path=":collectionId/:subCollectionId" element={<SubCollectionRouteWrapper />} />
         </Routes>
